@@ -122,7 +122,6 @@ func (r *Reader) more() {
 	var a int
 	a, r.state = r.r.Read(r.data[len(r.data):cap(r.data)])
 	if a == 0 && r.state == nil {
-		r.state = io.ErrNoProgress
 		return
 	} else if a > 0 && r.state == io.EOF {
 		// discard the io.EOF if we read more than 0 bytes.
